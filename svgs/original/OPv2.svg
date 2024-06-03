@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400" shape-rendering="geometricPrecision">
+
+  <style>
+    :root {
+      --protocolColor: #ff0000;
+    }
+  </style>
+<!--background-->
+  <rect width="300" height="400" rx="0" ry="0" fill="#fdffe8"/>
+<!--feet-->
+  <rect width="6" height="20" rx="0" ry="0" transform="matrix(1 0 0 .4 142 382)" fill="#0A212E"/>
+  <rect width="6" height="20" rx="0" ry="0" transform="matrix(1 0 0 .4 152 382)" fill="#0A212E"/>
+<!--Group containing right arm and cane with animation-->
+  <g transform="translate(155 336)">
+    <g>
+      <rect width="6" height="13.12" rx="0" ry="0" transform="matrix(.86-.51558 0.59 0.98 0 0)" fill="#0A212E" stroke-width="0"/>
+      <rect width="6" height="13.12" rx="0" ry="0" transform="matrix(.26-.96 1.10 0.3 7.6 12.8)" fill="#0A212E" stroke-width="0"/>
+      <rect width="4.11" height="69" rx="0" ry="0" transform="matrix(.71 0.18-.28 1.08 31.97 -22.11)" fill="#0A212E" stroke-width="0"/>
+      <ellipse rx="15" ry="15" transform="matrix(.465 0 0 0.44 34.25 -24.6)" fill="var(--protocolColor)" stroke-width="0"/>
+      <animateTransform attributeName="transform" type="rotate" values="0;0; -40; 0; 0" keyTimes="0; 0.5 ;0.75;0.8; 1" dur="5s" repeatCount="indefinite"/>
+    </g>
+  </g>
+<!--leftArm-->
+  <rect width="6" height="13.12" rx="0" ry="0" transform="matrix(.98044 .1968 -.225 1.12094 136.4 346)" fill="#0A212E"/>
+  <rect width="6" height="13.12" rx="0" ry="0" transform="matrix(.98044 .1968 -.225 1.12094 139.059 333)" fill="#0A212E"/>
+<!--head-->
+  <rect width="6" height="20" rx="0" ry="0" transform="matrix(1.33333 0 0 .3 146 325)" fill="#0A212E"/>
+<!--hat-->
+  <path fill="var(--protocolColor)" d="m150 302.5 4 7.5h-8zm-4 7.5h8l2 12h-12z"/>
+  <ellipse rx="15" ry="3" transform="translate(150 322)" fill="var(--protocolColor)"/>
+<!--shoulders-->
+  <path d="M146 329h8l7 4h-22z" fill="var(--protocolColor)"/>
+<!--shadowLines-->
+  <rect width="30" height="15" rx="0" ry="0" transform="matrix(3.36444 0 0 .13012 0 382)" fill="#c4a57c"/>
+  <rect width="30" height="15" rx="0" ry="0" transform="matrix(3.36444 0 0 .13012 200 382)" fill="#c4a57c"/>
+  <rect width="30" height="15.371" rx="0" ry="0" transform="matrix(3.36444 0 0 .13012 99.533 374.722)" fill="#0a212e"/>
+<!--cape-->
+  <path d="M139 333h22l4 53h-30z" fill="var(--protocolColor)"/>
+  <rect width="30" height="15.371" rx="0" ry="0" transform="matrix(1.7344 0 0 .13012 131.984 388)" fill="#0a212e"/>
+<!--cloudsLines-->
+  <path d="M56.767 190.738c-10.213-.621-23.894 6.446-26.881 14.775m206.443-30.258c9.497 1.428 13.522 5.976 16.002 10.641m0-.001c4.935-16.384 26.76-26.433 45.268-20.409M70.914 130.374c-5.592-.77-12.184 4.23-13.304 9.832-10.426-2.134-24.798 5.176-28.447 16.95-8.017-7.126-19.99-8.365-29.26-5.745" fill="none" stroke="#c4a57c" stroke-width="2"/>
+<!--molochBody-->
+  <g fill="#0a212e" style="transform-origin: center;">
+    <path d="M101.208 213.844h97.584l-8.988 43.86-98.987 5.503z"/>
+    <path d="M150.269 218.96h-.538l-48.54-3.836.246-5.036.328-3.998.738-4.237 1.23-3.437 2.214-3.038 2.826-2.457.294-2.155-8.545-19.823.295-3.735-4.178 3.796-1.02 9.624-1.618 3.07v11.699l-.531 1.818-1.233 3.132-1.42 1.493-2.576 2.502.439 6.326-1.316 8.293-4.033 3.248-20.956-22.312-6.355-4.086 1.846-12.675 2.013-2.617 2.772-2.289 1.009-17.094 3.91-5.78.937-18.542 1.967-6.109 2.987-4.404 3.33-3.036 19.577-12.014 1.24-3.708 8.928-6.77 1.323-4.191 7.403-3.68 8.023-8.058 1.603-1.389-.267-1.302-1.603-2.17-2.048-1.129-4.007-1.997-4.986-2.344-3.829-1.823-3.74-1.823-2.582-2.778-2.493-4.08-1.336-4.862-.623-5.035.712-4.427 1.336-3.56 1.603-2.69 2.226-1.91 2.315-1.39 2.048-1.476 1.87-1.562 1.425-1.736 1.157-2.518v-2.257l-.534-2.257-1.336-2.257-1.692-.869-2.404-.607-.445-1.563 1.158-1.563 2.67-.26 3.295.52 3.206 2.084 2.938 4.428.98 5.035-.89 6.077-2.85 5.209-2.137 4.34.623 3.126 3.651 2.778 4.63 1.519 13.342-.346 3.424-3.338 5.431-1.726h9.748l5.43 1.726 3.425 3.338 13.341.346 4.63-1.52 3.652-2.777.623-3.126-2.137-4.34-2.85-5.209-.89-6.077.98-5.035 2.938-4.428 3.206-2.083 3.294-.521 2.671.26 1.158 1.563-.445 1.563-2.404.607-1.692.869-1.336 2.257-.534 2.257v2.257l1.157 2.518 1.425 1.736 1.87 1.562 2.048 1.476 2.315 1.39 2.226 1.91 1.603 2.69 1.336 3.56.712 4.427-.623 5.035-1.336 4.862-2.493 4.08-2.582 2.778-3.74 1.823-3.829 1.823-4.986 2.344-4.007 1.997-2.048 1.129-1.603 2.17-.267 1.302 1.603 1.39 8.023 8.057 7.403 3.68 1.323 4.19 8.928 6.771 1.24 3.708 19.578 12.014 3.33 3.036 2.986 4.404 1.967 6.109.937 18.542 3.91 5.78 1.01 17.094 2.771 2.29 2.013 2.616 1.846 12.675-6.355 4.086-20.956 22.312-4.033-3.248-1.316-8.293.439-6.326-2.576-2.502-1.42-1.493-1.233-3.132-.531-1.818v-11.699l-1.617-3.07-1.021-9.624-4.178-3.796.295 3.735-8.545 19.823.294 2.155 2.826 2.457 2.214 3.038 1.23 3.437.738 4.237.328 3.998.246 5.036z"/>
+    <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1;1.05;1;1" keyTimes="0; 0.84;0.88; 1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="#0a212e;#0a212e;#ff0000;#0a212e;#0a212e" keyTimes="0; 0.8; 0.85; 0.95; 1" dur="5s" repeatCount="indefinite"/>
+  </g>
+<!--clouds-->
+  <g fill="#fdffe8">
+    <ellipse rx="45.118" ry="47.697" transform="translate(52.159 238.525)"/>
+    <ellipse rx="45.118" ry="65" transform="matrix(.67994 0 0 .4824 100 247)"/>
+    <ellipse rx="45.118" ry="47.697" transform="matrix(.67994 0 0 .66913 155.08 258.757)"/>
+    <ellipse rx="45.118" ry="47.697" transform="matrix(.56043 0 0 .66913 193.567 231.29)"/>
+    <ellipse rx="45.118" ry="47.697" transform="matrix(.67994 0 0 .66913 230.922 206.61)"/>
+  </g>
+
+<!--stars-->
+  <g fill="#0a212e" stroke="#0a212e" stroke-width=".8">
+    <path d="M31.511 72.637c-.037 5.066 4.97 10.112 10.118 10.119-5.19-.065-10.148 4.914-9.976 9.904-.406-4.399-4.772-10.203-10.19-10.047 5.11.046 10.269-4.759 10.048-9.976Zm231.357-39.593c-.037 5.066 4.97 10.112 10.118 10.119-5.19-.065-10.148 4.914-9.976 9.904-.406-4.399-4.772-10.203-10.19-10.047 5.11.046 10.269-4.759 10.048-9.976Z"/>
+    <path d="M29.958 39.957c-.037 5.066 4.97 10.112 10.118 10.119-5.19-.065-10.148 4.914-9.976 9.904-.406-4.399-4.772-10.203-10.19-10.047 5.11.046 10.269-4.759 10.048-9.976Z" transform="matrix(.51097 0 0 .53193 34.73 6.527)"/>
+    <path d="M29.958 39.957c-.037 5.066 4.97 10.112 10.118 10.119-5.19-.065-10.148 4.914-9.976 9.904-.406-4.399-4.772-10.203-10.19-10.047 5.11.046 10.269-4.759 10.048-9.976Z" transform="matrix(.51097 0 0 .53193 253.819 85.989)"/>
+  </g>
+<!--towerLeft-->
+  <g transform="translate(0 120)" fill="#0a212e">
+    <path d="M40.203 135.722h49.893l9.979 121H30.224z"/>
+    <rect width="69.851" height="7" rx="0" ry="0" transform="translate(30.224 128.722)"/>
+    <rect width="50" height="86.722" rx="0" ry="0" transform="matrix(1 0 0 .76938 0 190)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 0 185)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 20.224 185)"/>
+    <rect width="10" height="1.237" rx="0" ry="0" transform="matrix(1 0 0 4.04084 30.224 123.722)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 50 123.722)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 69.51 123.722)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 90.15 123.722)"/>
+  </g>
+<!--towerRight-->
+  <g transform="matrix(-1 0 0 1 300.075 120)" fill="#0a212e">
+    <path d="M40.203 135.722h49.893l9.979 121H30.224z"/>
+    <rect width="69.851" height="7" rx="0" ry="0" transform="translate(30.224 128.722)"/>
+    <rect width="50" height="86.722" rx="0" ry="0" transform="matrix(1 0 0 .76938 0 190)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 0 185)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 20.224 185)"/>
+    <rect width="10" height="1.237" rx="0" ry="0" transform="matrix(1 0 0 4.04084 30.224 123.722)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 50 123.722)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 69.51 123.722)"/>
+    <rect width="10" height="1.25" rx="0" ry="0" transform="matrix(1 0 0 4.00001 90.15 123.722)"/>
+  </g>
+
+<!--molochFace-->
+  <g style="transform-origin: center;">
+    <!--molochFangs-->
+    <path d="m137.235 87.09.4-.48.58-.02.4.52.44 4.24.08 1.7-.38.54-.82.06-.96-1.26zm25.394-.046-.4-.48-.58-.02-.4.52-.44 4.24-.08 1.7.38.54.82.06.96-1.26z" fill="#fcffe5"/>
+    <!--molochEyes-->
+    <path d="m161.206 74.951-6.553 4.177 1.18 1.88 1.62.68 1.84-.4 1.38-1.28.68-1.6zm-22.412 0 6.553 4.177-1.18 1.88-1.62.68-1.84-.4-1.38-1.28-.68-1.6z" fill="#c4a57c">
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.8;0.99;1" dur="5s" repeatCount="indefinite"/>
+    </path>
+    <!--molochClosingEyes-->
+    <g>
+    <path d="M145.102125,78.991243l-6.30581-4.015379-.024911,1.220558l4.159864,2.466027-3.707767.539211.639643.867981l1.644796-.289322l1.370664-.263025l1.309745-.210416.913776-.315635Z" transform="matrix(1 0 0 1.158033 0.000001-12.311199)" fill="#c5a47c" stroke-width="0.8"/>
+    <path d="M145.102125,78.991243l-6.30581-4.015379-.024911,1.220558l4.159864,2.466027-3.707767.539211.639643.867981l1.644796-.289322l1.370664-.263025l1.309745-.210416.913776-.315635Z" transform="matrix(-1 0 0 1.158033 299.933973-11.951199)" fill="#c5a47c" stroke-width="0.8"/>
+  </g>
+<!--molochMouth-->
+  <g fill="#fcffe5">
+    <rect width="20" height="1.266" rx="0" ry="0" transform="translate(139.96 91.668)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.88059 -.87408 .71584 .72118 139.571 92.345)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.00876 -2.91386 .38057 .00114 140.867 95.506)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.01058 -3.51973 .47343 .00142 144.15 95.983)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.01058 -3.51973 .47343 .00142 154.725 95.983)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.01058 -3.51973 .47343 .00142 147.595 95.983)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.01058 -3.51973 .47343 .00142 151.094 95.983)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.00876 -2.91386 .38057 .00114 158.07 95.559)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.88059 -.87408 .71584 .72118 142.851 92.325)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.88059 -.87408 .71584 .72118 146.511 92.405)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.88059 -.87408 .71584 .72118 149.891 92.405)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.88059 -.87408 .71584 .72118 153.391 92.465)"/>
+    <rect width="2.013" height="2.358" rx="0" ry="0" transform="matrix(.88059 -.87408 .71584 .72118 156.751 92.485)"/>
+    </g>
+    <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1;1.1;1;1" keyTimes="0; 0.84;0.88; 1" dur="5s" repeatCount="indefinite"/>
+  </g>
+</svg>
