@@ -22,7 +22,7 @@ contract BlockMagicians is ERC721, Ownable {
   Counters.Counter private _tokenIds;
 
   constructor() ERC721("BlockMagicians", "BM") {
-    // RELEASE THE BM!
+    // RELEASE THE BlockMagicians!!
   }
 
   mapping (uint256 => bytes3) public color;
@@ -32,7 +32,7 @@ contract BlockMagicians is ERC721, Ownable {
   mapping (uint256 => uint8) public protocolInfo;
   string[10] public protocols = ["Base","Bitcoin","Celo","Ethereum","Gitcoin","Kleros","Monero","Optimism","UMA","Uniswap"];
 
-  bytes3[10] public protocolColor = [bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000),bytes3(0xff0000)];
+  bytes3[10] public protocolColor = [bytes3(0x2A68FF),bytes3(0xF59434),bytes3(0xF8EE51),bytes3(0x888888),bytes3(0x73E2E2),bytes3(0x9A72FC),bytes3(0xF06832),bytes3(0xFF4631),bytes3(0xDD4949),bytes3(0xE67CFE)];
   
   
 
@@ -50,7 +50,7 @@ contract BlockMagicians is ERC721, Ownable {
       color[id] = bytes2(predictableRandom[0]) | ( bytes2(predictableRandom[1]) >> 8 ) | ( bytes3(predictableRandom[2]) >> 16 );
       chubbiness[id] = 35+((55*uint256(uint8(predictableRandom[3])))/255);
 
-      protocolInfo[id] = uint8(predictableRandom[3]) % 10; // number between 0 and 9 
+      protocolInfo[id] = uint8(predictableRandom[3]) % 10; // pseudo random number between 0 and 9 
 
       return id;
   }
@@ -58,7 +58,7 @@ contract BlockMagicians is ERC721, Ownable {
   function tokenURI(uint256 id) public view override returns (string memory) {
       require(_exists(id), "not exist");
       string memory name = string(abi.encodePacked('BlockMagician #',id.toString()));
-      string memory description = string(abi.encodePacked('This magician uses Bitcoin ',protocols[id],' block magic is the color #',protocolColor[protocolInfo[id]].toColor(),' with a chubbiness of ',uint2str(chubbiness[id]),'!!!'));
+      string memory description = string(abi.encodePacked('This magician uses ',protocols[protocolInfo[id]],' block magic of color #',protocolColor[protocolInfo[id]].toColor(),' to fight Moloch!!'));
       string memory image = Base64.encode(bytes(generateSVGofTokenById(id)));
 
       return
@@ -74,8 +74,8 @@ contract BlockMagicians is ERC721, Ownable {
                               description,
                               '", "attributes": [{"trait_type": "color", "value": "#',
                               protocolColor[protocolInfo[id]].toColor(),
-                              '"},{"trait_type": "chubbiness", "value": ',
-                              uint2str(chubbiness[id]),
+                              '"},{"trait_type": "protocol", "value": ',
+                              protocols[protocolInfo[id]],
                               '}], "owner":"',
                               (uint160(ownerOf(id))).toHexString(20),
                               '", "image": "',
