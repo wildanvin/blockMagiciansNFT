@@ -21,29 +21,53 @@ contract BlockMagicians is ERC721, Ownable {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
+  uint256 public constant MINT_FEE = 0.002 ether;
+  address payable public constant wildanvin = payable(0x4b2b0D5eE2857fF41B40e3820cDfAc8A9cA60d9f);
+  address payable public constant buidlGuidl = payable(0x97843608a00e2bbc75ab0C1911387E002565DEDE);
+
+  string[10] public protocols = ["Base","Bitcoin","Celo","Ethereum","Gitcoin","Kleros","Monero","Optimism","UMA","Uniswap"];
+  bytes3[10] public protocolColor = [bytes3(0x2A68FF),bytes3(0xF59434),bytes3(0xF8EE51),bytes3(0x888888),bytes3(0x73E2E2),bytes3(0x9A72FC),bytes3(0xF06832),bytes3(0xFF4631),bytes3(0xDD4949),bytes3(0xE67CFE)];
+  
+  uint256 molochHealth = 1000;
+  mapping (uint256 => uint8) public protocolInfo;
+  
+  event minted (address owner, uint256 id);
+
+  error NotEnouhgETH();
+  error Fail2SendETH();
+  error AllMagiciansMinted();
+
   constructor() ERC721("BlockMagicians", "BM") {
     // RELEASE THE BlockMagicians!!
   }
 
-  mapping (uint256 => uint8) public protocolInfo;
-  string[10] public protocols = ["Base","Bitcoin","Celo","Ethereum","Gitcoin","Kleros","Monero","Optimism","UMA","Uniswap"];
-
-  bytes3[10] public protocolColor = [bytes3(0x2A68FF),bytes3(0xF59434),bytes3(0xF8EE51),bytes3(0x888888),bytes3(0x73E2E2),bytes3(0x9A72FC),bytes3(0xF06832),bytes3(0xFF4631),bytes3(0xDD4949),bytes3(0xE67CFE)];
-  
-  
-
   function mintItem()
+      payable
       public
       returns (uint256)
   {
+      if (msg.value < MINT_FEE) revert NotEnouhgETH();
+      if (molochHealth == 0) revert AllMagiciansMinted();
       
       _tokenIds.increment();
-
       uint256 id = _tokenIds.current();
       _mint(msg.sender, id);
 
       bytes32 predictableRandom = keccak256(abi.encodePacked( blockhash(block.number-1), msg.sender, address(this) ));
-      protocolInfo[id] = uint8(predictableRandom[3]) % 10; // pseudo random number between 0 and 9 
+      protocolInfo[id] = uint8(predictableRandom[3]) % 10; // pseudo random number between 0 and 9
+
+      //Damage to Moloch
+      molochHealth -= 1;
+
+      //Send ETH
+      uint256 half = msg.value/2;
+      (bool successWildanvin, ) = wildanvin.call{value: half}("");
+      if (!successWildanvin) revert Fail2SendETH();
+
+      (bool successBuildGuidl, ) = buidlGuidl.call{value: half}("");
+      if (!successBuildGuidl) revert Fail2SendETH();
+
+      emit minted(msg.sender, id);
 
       return id;
   }
