@@ -7,12 +7,27 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     BlockMagicians: {
-      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
       abi: [
         {
           inputs: [],
           stateMutability: "nonpayable",
           type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "AllMagiciansMinted",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "Fail2SendETH",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NotEnouhgETH",
+          type: "error",
         },
         {
           anonymous: false,
@@ -109,6 +124,38 @@ const deployedContracts = {
           type: "event",
         },
         {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+          ],
+          name: "minted",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "MINT_FEE",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "address",
@@ -140,6 +187,19 @@ const deployedContracts = {
               internalType: "uint256",
               name: "",
               type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "buidlGuidl",
+          outputs: [
+            {
+              internalType: "address payable",
+              name: "",
+              type: "address",
             },
           ],
           stateMutability: "view",
@@ -198,7 +258,20 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "molochHealth",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
         {
@@ -483,6 +556,19 @@ const deployedContracts = {
           name: "transferOwnership",
           outputs: [],
           stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "wildanvin",
+          outputs: [
+            {
+              internalType: "address payable",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
       ],

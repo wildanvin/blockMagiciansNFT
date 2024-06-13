@@ -28,7 +28,7 @@ contract BlockMagicians is ERC721, Ownable {
   string[10] public protocols = ["Base","Bitcoin","Celo","Ethereum","Gitcoin","Kleros","Monero","Optimism","UMA","Uniswap"];
   bytes3[10] public protocolColor = [bytes3(0x2A68FF),bytes3(0xF59434),bytes3(0xF8EE51),bytes3(0x888888),bytes3(0x73E2E2),bytes3(0x9A72FC),bytes3(0xF06832),bytes3(0xFF4631),bytes3(0xDD4949),bytes3(0xE67CFE)];
   
-  uint256 molochHealth = 1000;
+  uint256 public molochHealth = 1000;
   mapping (uint256 => uint8) public protocolInfo;
   
   event minted (address owner, uint256 id);
