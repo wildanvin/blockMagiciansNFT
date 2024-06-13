@@ -14,11 +14,11 @@ const Home: NextPage = () => {
       <div className="flex items-center flex-col flex-grow pt-10">
         <div className="px-5">
           <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
+            <span className="block text-4xl mb-2">Moloch is attacking the world!</span>
+            <span className="block text-2xl">mint a blockMagician to fight it back!</span>
           </h1>
           <div className="flex justify-center items-center space-x-2">
-            <p className="my-2 font-medium">Connected Address:</p>
+            <p className="my-2 font-medium">Last minted by:</p>
             <Address address={connectedAddress} />
           </div>
           <p className="text-center text-lg">
@@ -27,6 +27,7 @@ const Home: NextPage = () => {
               packages/nextjs/app/page.tsx
             </code>
           </p>
+          <img src="OP.svg" alt="nftImage" />
           <p className="text-center text-lg">
             Edit your smart contract{" "}
             <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
