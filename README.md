@@ -1,5 +1,11 @@
 # 🏗 Scaffold-ETH 2
 
+some links usefull links:
+https://github.com/Quanhua-Guan/scaffold-eth-2/tree/eeemay/oh-pandas-meme
+https://slatestarcodex.com/2014/07/30/meditations-on-moloch/
+https://mandalamerge.com/yourNfts
+https://www.rareskills.io/post/solidity-fixed-point
+
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
   <a href="https://scaffoldeth.io">Website</a>
