@@ -33,7 +33,8 @@ contract BlockMagicians is ERC721, Ownable {
   
   event minted (address owner, uint256 id);
 
-  error NotEnouhgETH();
+  /// Thrown when `msg.value` is lower than the required mint fee.
+  error NotEnoughETH();
   error Fail2SendETH();
   error AllMagiciansMinted();
 
@@ -46,7 +47,7 @@ contract BlockMagicians is ERC721, Ownable {
       public
       returns (uint256)
   {
-      if (msg.value < MINT_FEE) revert NotEnouhgETH();
+      if (msg.value < MINT_FEE) revert NotEnoughETH();
       if (molochHealth == 0) revert AllMagiciansMinted();
       
       _tokenIds.increment();

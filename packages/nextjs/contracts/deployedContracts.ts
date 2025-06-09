@@ -26,7 +26,7 @@ const deployedContracts = {
         },
         {
           inputs: [],
-          name: "NotEnouhgETH",
+          name: "NotEnoughETH",
           type: "error",
         },
         {
