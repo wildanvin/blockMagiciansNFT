@@ -4,10 +4,13 @@ import type { NextPage } from "next";
 import { useMemo } from "react";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
-// Card displaying a single NFT
-interface NFTCardProps {
+
+// Reuse NFTCard and logic from the previous client page
+
+type NFTCardProps = {
   id: number;
-}
+};
+
 
 const NFTCard = ({ id }: NFTCardProps) => {
   const { data } = useScaffoldReadContract({
@@ -16,17 +19,14 @@ const NFTCard = ({ id }: NFTCardProps) => {
     args: [BigInt(id)],
   });
 
-  const svgContent = useMemo(() => {
+
+  const imageSrc = useMemo(() => {
     if (!data) return "";
     try {
-      // tokenURI is returned as a base64 encoded JSON string
       const json = atob(data.replace("data:application/json;base64,", ""));
-      // protocol value is not quoted in the JSON, fix it before parsing
-      const fixed = json.replace(/"value":\s*([A-Za-z]+)/g, '"value": "$1"');
-      const meta = JSON.parse(fixed);
-      const image = meta.image as string;
-      // decode the base64 encoded svg image
-      return atob((image as string).replace("data:image/svg+xml;base64,", ""));
+      const meta = JSON.parse(json);
+      return meta.image as string;
+
     } catch (err) {
       console.error("Failed to decode tokenURI", err);
       return "";
@@ -35,11 +35,10 @@ const NFTCard = ({ id }: NFTCardProps) => {
 
   return (
     <div className="flex flex-col items-center">
-      {svgContent ? (
-        <div
-          className="w-48 h-auto"
-          dangerouslySetInnerHTML={{ __html: svgContent }}
-        />
+
+      {imageSrc ? (
+        <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" />
+
       ) : (
         <span>Loading...</span>
       )}
