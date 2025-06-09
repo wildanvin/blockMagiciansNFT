@@ -14,3 +14,5 @@ const ViewNFTs: NextPage = () => {
   return <ViewNFTsClient />;
 };
 
+export default ViewNFTs;
+
