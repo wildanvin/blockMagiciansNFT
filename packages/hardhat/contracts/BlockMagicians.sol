@@ -41,6 +41,25 @@ contract BlockMagicians is ERC721, Ownable {
     // RELEASE THE BlockMagicians!!
   }
 
+  function _mintOne(address to, uint256 blockOffset) internal returns (uint256) {
+      require(blockOffset > 0 && blockOffset <= 256, "invalid offset");
+
+      _tokenIds.increment();
+      uint256 id = _tokenIds.current();
+      _mint(to, id);
+
+      bytes32 predictableRandom = keccak256(
+          abi.encodePacked(blockhash(block.number - blockOffset), msg.sender, address(this), id)
+      );
+      protocolInfo[id] = uint8(predictableRandom[3]) % 10;
+
+      molochHealth -= 1;
+
+      emit minted(to, id);
+
+      return id;
+  }
+
   function mintItem()
       payable
       public
@@ -48,16 +67,8 @@ contract BlockMagicians is ERC721, Ownable {
   {
       if (msg.value < MINT_FEE) revert NotEnoughETH();
       if (molochHealth == 0) revert AllMagiciansMinted();
-      
-      _tokenIds.increment();
-      uint256 id = _tokenIds.current();
-      _mint(msg.sender, id);
 
-      bytes32 predictableRandom = keccak256(abi.encodePacked( blockhash(block.number-1), msg.sender, address(this) ));
-      protocolInfo[id] = uint8(predictableRandom[3]) % 10; // pseudo random number between 0 and 9
-
-      //Damage to Moloch
-      molochHealth -= 1;
+      uint256 id = _mintOne(msg.sender, 1);
 
       //Send ETH
       uint256 half = msg.value/2;
@@ -67,9 +78,47 @@ contract BlockMagicians is ERC721, Ownable {
       (bool successBuildGuidl, ) = buidlGuidl.call{value: half}("");
       if (!successBuildGuidl) revert Fail2SendETH();
 
-      emit minted(msg.sender, id);
-
       return id;
+  }
+
+  function mintThree() payable public returns (uint256[3] memory) {
+      uint256 amount = 3;
+      if (msg.value < MINT_FEE * amount) revert NotEnoughETH();
+      if (molochHealth < amount) revert AllMagiciansMinted();
+
+      uint256[3] memory ids;
+      for (uint256 i = 0; i < amount; i++) {
+          ids[i] = _mintOne(msg.sender, i + 1);
+      }
+
+      uint256 half = msg.value / 2;
+      (bool successWildanvin, ) = wildanvin.call{value: half}("");
+      if (!successWildanvin) revert Fail2SendETH();
+
+      (bool successBuildGuidl, ) = buidlGuidl.call{value: half}("");
+      if (!successBuildGuidl) revert Fail2SendETH();
+
+      return ids;
+  }
+
+  function mintTen() payable public returns (uint256[10] memory) {
+      uint256 amount = 10;
+      if (msg.value < MINT_FEE * amount) revert NotEnoughETH();
+      if (molochHealth < amount) revert AllMagiciansMinted();
+
+      uint256[10] memory ids;
+      for (uint256 i = 0; i < amount; i++) {
+          ids[i] = _mintOne(msg.sender, i + 1);
+      }
+
+      uint256 half = msg.value / 2;
+      (bool successWildanvin, ) = wildanvin.call{value: half}("");
+      if (!successWildanvin) revert Fail2SendETH();
+
+      (bool successBuildGuidl, ) = buidlGuidl.call{value: half}("");
+      if (!successBuildGuidl) revert Fail2SendETH();
+
+      return ids;
   }
 
   function tokenURI(uint256 id) public view override returns (string memory) {
