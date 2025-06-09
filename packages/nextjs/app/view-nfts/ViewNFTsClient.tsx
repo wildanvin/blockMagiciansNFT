@@ -4,11 +4,13 @@ import type { NextPage } from "next";
 import { useMemo } from "react";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
+
 // Reuse NFTCard and logic from the previous client page
 
 type NFTCardProps = {
   id: number;
 };
+
 
 const NFTCard = ({ id }: NFTCardProps) => {
   const { data } = useScaffoldReadContract({
@@ -17,12 +19,14 @@ const NFTCard = ({ id }: NFTCardProps) => {
     args: [BigInt(id)],
   });
 
+
   const imageSrc = useMemo(() => {
     if (!data) return "";
     try {
       const json = atob(data.replace("data:application/json;base64,", ""));
       const meta = JSON.parse(json);
       return meta.image as string;
+
     } catch (err) {
       console.error("Failed to decode tokenURI", err);
       return "";
@@ -31,8 +35,10 @@ const NFTCard = ({ id }: NFTCardProps) => {
 
   return (
     <div className="flex flex-col items-center">
+
       {imageSrc ? (
         <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" />
+
       ) : (
         <span>Loading...</span>
       )}
