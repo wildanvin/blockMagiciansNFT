@@ -21,7 +21,7 @@ contract BlockMagicians is ERC721, Ownable {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
-  uint256 public constant MINT_FEE = 0.002 ether;
+  uint256 public constant MINT_FEE = 0.001 ether;
   address payable public constant wildanvin = payable(0x4b2b0D5eE2857fF41B40e3820cDfAc8A9cA60d9f);
   address payable public constant buidlGuidl = payable(0x97843608a00e2bbc75ab0C1911387E002565DEDE);
 
@@ -33,7 +33,7 @@ contract BlockMagicians is ERC721, Ownable {
   
   event minted (address owner, uint256 id);
 
-  error NotEnouhgETH();
+  error NotEnoughETH();
   error Fail2SendETH();
   error AllMagiciansMinted();
 
@@ -46,7 +46,7 @@ contract BlockMagicians is ERC721, Ownable {
       public
       returns (uint256)
   {
-      if (msg.value < MINT_FEE) revert NotEnouhgETH();
+      if (msg.value < MINT_FEE) revert NotEnoughETH();
       if (molochHealth == 0) revert AllMagiciansMinted();
       
       _tokenIds.increment();
