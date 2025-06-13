@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ethers } from "ethers";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
-import { Address } from "~~/components/scaffold-eth";
+// import { useAccount } from "wagmi";
+// import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
+  // const { address: connectedAddress } = useAccount();
 
   const protocols = [
     "Base",
@@ -117,6 +117,33 @@ const Home: NextPage = () => {
           </p>
         </div>
 
+        <div className="mb-6">
+          <p>For each block magician minted Moloch&apos;s health is reduced by 1.</p>
+          <p>Mint one for 0.001 ETH.</p>
+          <p>
+            50% of the proceedings will go the the{" "}
+            <a
+              href="https://buidlguidl.com/"
+              className="text-blue-400 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              BuidlGuidl
+            </a>{" "}
+            and the other 50% to your friendly web3 dev,{" "}
+            <a
+              href="https://x.com/wildanvin"
+              className="text-blue-400 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              me.
+            </a>{" "}
+            ✌️😁
+          </p>
+          <p>Would Moloch be defeated? I think so.</p>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <button
             className="bg-indigo-600 hover:bg-indigo-500 px-4 py-3 rounded-lg font-semibold disabled:opacity-50"
@@ -173,10 +200,10 @@ const Home: NextPage = () => {
           </button>
         </div>
 
-        <div className="flex justify-center items-center space-x-2">
+        {/* <div className="flex justify-center items-center space-x-2">
           <p className="font-medium">Your address:</p>
           <Address address={connectedAddress} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
