@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import type { NextPage } from "next";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { Address } from "~~/components/scaffold-eth";
+import { protocols, descriptions } from "../page";
 
 // Reuse NFTCard and logic from the previous client page
 
@@ -22,7 +23,12 @@ const NFTCard = ({ id }: NFTCardProps) => {
     if (!data) return null;
     try {
       const json = atob(data.replace("data:application/json;base64,", ""));
-      return JSON.parse(json) as { image: string; owner: string; description: string };
+      return JSON.parse(json) as {
+        image: string;
+        owner: string;
+        description: string;
+        attributes?: { trait_type: string; value: string }[];
+      };
     } catch (err) {
       console.error("Failed to decode tokenURI", err);
       return null;
@@ -30,18 +36,38 @@ const NFTCard = ({ id }: NFTCardProps) => {
   }, [data]);
 
   const imageSrc = meta?.image ?? "";
+  const protocol = useMemo(() => {
+    const attr = meta?.attributes?.find(a => a.trait_type === "protocol");
+    if (attr) return attr.value as string;
+    const match = meta?.description?.match(/uses ([^ ]+) block/);
+    return match?.[1];
+  }, [meta]);
+
+  const protocolIndex = protocol ? protocols.indexOf(protocol) : -1;
 
   return (
-    <div className="flex flex-col items-center">
-      {imageSrc ? <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" /> : <span>Loading...</span>}
+    <div className="flex flex-col items-center group">
+      {imageSrc ? (
+        <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" />
+      ) : (
+        <span>Loading...</span>
+      )}
       <span className="mt-2 font-semibold">#{id}</span>
       {meta?.owner && (
-        <div className="mt-1">
-          <Address address={meta.owner} />
+        <div className="mt-1 text-sm">
+          Owner: <Address address={meta.owner} />
         </div>
       )}
-      {meta?.description && (
-        <p className="text-center text-sm mt-1">{meta.description}</p>
+      {protocol && (
+        <>
+          <span className="mt-1 font-medium">{protocol}</span>
+          {protocolIndex >= 0 && (
+            <p className="text-center text-sm mt-1 hidden group-hover:block">
+              {protocol}
+              {descriptions[protocolIndex]}
+            </p>
+          )}
+        </>
       )}
     </div>
   );
