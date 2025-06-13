@@ -35,17 +35,17 @@ export const descriptions = [
 ];
 
 export const websites = [
-    "https://base.org",
-    "https://bitcoin.org",
-    "https://celo.org",
-    "https://ethereum.org",
-    "https://gitcoin.co",
-    "https://kleros.io",
-    "https://www.getmonero.org",
-    "https://www.optimism.io",
-    "https://uma.xyz",
-    "https://uniswap.org",
-  ];
+  "https://base.org",
+  "https://bitcoin.org",
+  "https://celo.org",
+  "https://ethereum.org",
+  "https://gitcoin.co",
+  "https://kleros.io",
+  "https://www.getmonero.org",
+  "https://www.optimism.io",
+  "https://uma.xyz",
+  "https://uniswap.org",
+];
 
 const Home: NextPage = () => {
   // const { address: connectedAddress } = useAccount();
@@ -118,10 +118,15 @@ const Home: NextPage = () => {
         </div>
 
         <div className="mb-6">
-          <p>For each block magician minted Moloch&apos;s health is reduced by 1.</p>
-          <p>Mint one for 0.001 ETH.</p>
           <p>
-            50% of the proceedings will go the the{" "}
+            Every Block&nbsp;Magician you mint removes <strong>one life point</strong> from Moloch.
+          </p>
+
+          <p>Price: 0.001 ETH</p>
+
+          <p>
+            Where your ETH goes:
+            <br />• <strong>50 %</strong> powers the{" "}
             <a
               href="https://buidlguidl.com/"
               className="text-blue-400 underline"
@@ -129,19 +134,20 @@ const Home: NextPage = () => {
               rel="noopener noreferrer"
             >
               BuidlGuidl
-            </a>{" "}
-            and the other 50% to your friendly web3 dev,{" "}
+            </a>
+            .<br />• <strong>50 %</strong> supports your friendly Web3&nbsp;dev —{" "}
             <a
               href="https://x.com/wildanvin"
               className="text-blue-400 underline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              me.
-            </a>{" "}
-            ✌️😁
+              me
+            </a>
+            ! ✌️😁
           </p>
-          <p>Would Moloch be defeated? I think so.</p>
+
+          <p>Would Moloch be defeated?... I think so.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
