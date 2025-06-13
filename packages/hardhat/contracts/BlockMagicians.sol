@@ -26,7 +26,7 @@ contract BlockMagicians is ERC721, Ownable {
   address payable public constant buidlGuidl = payable(0x97843608a00e2bbc75ab0C1911387E002565DEDE);
 
   string[10] public protocols = ["Base","Bitcoin","Celo","Ethereum","Gitcoin","Kleros","Monero","Optimism","UMA","Uniswap"];
-  bytes3[10] public protocolColor = [bytes3(0x2A68FF),bytes3(0xF59434),bytes3(0xF8EE51),bytes3(0x888888),bytes3(0x73E2E2),bytes3(0x9A72FC),bytes3(0xF06832),bytes3(0xFFFFFF),bytes3(0xDD4949),bytes3(0xE67CFE)];
+  bytes3[10] public protocolColor = [bytes3(0x2A68FF),bytes3(0xF59434),bytes3(0xF8EE51),bytes3(0x888888),bytes3(0x73E2E2),bytes3(0x9A72FC),bytes3(0xF06832),bytes3(0xFF0000),bytes3(0xDD4949),bytes3(0xE67CFE)];
   
   uint256 public molochHealth = 1000;
   mapping (uint256 => uint8) public protocolInfo;
