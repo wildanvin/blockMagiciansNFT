@@ -8,36 +8,33 @@ import type { NextPage } from "next";
 // import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
-const Home: NextPage = () => {
-  // const { address: connectedAddress } = useAccount();
+export const protocols = [
+  "Base",
+  "Bitcoin",
+  "Celo",
+  "Ethereum",
+  "Gitcoin",
+  "Kleros",
+  "Monero",
+  "Optimism",
+  "UMA",
+  "Uniswap",
+];
 
-  const protocols = [
-    "Base",
-    "Bitcoin",
-    "Celo",
-    "Ethereum",
-    "Gitcoin",
-    "Kleros",
-    "Monero",
-    "Optimism",
-    "UMA",
-    "Uniswap",
-  ];
+export const descriptions = [
+  ", the agile illusionist who channels Coinbase’s strength into a fast, low-cost Layer-2 stage built on the OP Stack, inviting builders to conjure dApps with ease.",
+  ", the stoic grandmaster who introduced the world to peer-to-peer electronic cash, forging trustless value with cryptographic proof instead of intermediaries.",
+  ", the nimble enchantress who puts mobile first, casting carbon-negative spells to make ultra-light, low-fee payments accessible to everyone.",
+  ", the versatile archmage who transforms code into unstoppable smart contracts, powering a universe of decentralized applications on his global ledger.",
+  ", the generous benefactor whose quadratic-funding magic rallies communities to finance open-source public goods with fairness and impact.",
+  ", the impartial adjudicator whose decentralized jury spells deliver fast, affordable verdicts for Web3 disputes across realms.",
+  ", the shadow-weaver who cloaks every sender, receiver, and amount in ring signatures and stealth addresses, championing default privacy for all.",
+  ", the optimistic sorceress scaling Ethereum with rollup tricks, granting users cheaper, speedier transactions while preserving mainnet security.",
+  ", the truth-seeker who wields an Optimistic Oracle to anchor any verifiable fact on-chain, opening markets for limitless synthetic assets.",
+  ", the liquidity alchemist whose automated market-maker formula turns pooled tokens into constant, permissionless swaps for traders worldwide.",
+];
 
-  const descriptions = [
-    ", the agile illusionist who channels Coinbase’s strength into a fast, low-cost Layer-2 stage built on the OP Stack, inviting builders to conjure dApps with ease.",
-    ", the stoic grandmaster who introduced the world to peer-to-peer electronic cash, forging trustless value with cryptographic proof instead of intermediaries.",
-    ", the nimble enchantress who puts mobile first, casting carbon-negative spells to make ultra-light, low-fee payments accessible to everyone.",
-    ", the versatile archmage who transforms code into unstoppable smart contracts, powering a universe of decentralized applications on his global ledger.",
-    ", the generous benefactor whose quadratic-funding magic rallies communities to finance open-source public goods with fairness and impact.",
-    ", the impartial adjudicator whose decentralized jury spells deliver fast, affordable verdicts for Web3 disputes across realms.",
-    ", the shadow-weaver who cloaks every sender, receiver, and amount in ring signatures and stealth addresses, championing default privacy for all.",
-    ", the optimistic sorceress scaling Ethereum with rollup tricks, granting users cheaper, speedier transactions while preserving mainnet security.",
-    ", the truth-seeker who wields an Optimistic Oracle to anchor any verifiable fact on-chain, opening markets for limitless synthetic assets.",
-    ", the liquidity alchemist whose automated market-maker formula turns pooled tokens into constant, permissionless swaps for traders worldwide.",
-  ];
-
-  const websites = [
+export const websites = [
     "https://base.org",
     "https://bitcoin.org",
     "https://celo.org",
@@ -49,6 +46,9 @@ const Home: NextPage = () => {
     "https://uma.xyz",
     "https://uniswap.org",
   ];
+
+const Home: NextPage = () => {
+  // const { address: connectedAddress } = useAccount();
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
