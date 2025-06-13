@@ -78,7 +78,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-black text-white flex flex-col items-center justify-center">
-      <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-lg p-8 max-w-xl w-full">
+      <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-lg p-8 my-8 max-w-xl w-full">
         <h3 className="text-5xl font-bold text-center mb-4">Moloch is attacking!</h3>
         {/* <img src="svgs/Optimism.svg"></img> */}
         <p className="text-center text-lg mb-6">Mint a BlockMagician to fight back!</p>

@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
+import { descriptions, protocols } from "../page";
 import type { NextPage } from "next";
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { Address } from "~~/components/scaffold-eth";
-import { protocols, descriptions } from "../page";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 // Reuse NFTCard and logic from the previous client page
 
@@ -47,11 +47,7 @@ const NFTCard = ({ id }: NFTCardProps) => {
 
   return (
     <div className="flex flex-col items-center group">
-      {imageSrc ? (
-        <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" />
-      ) : (
-        <span>Loading...</span>
-      )}
+      {imageSrc ? <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" /> : <span>Loading...</span>}
       <span className="mt-2 font-semibold">#{id}</span>
       {meta?.owner && (
         <div className="mt-1 text-sm">
@@ -91,7 +87,7 @@ const ViewNFTsClient: NextPage = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Latest BlockMagicians</h1>
+      <h1 className="text-4xl font-bold text-center mb-6">Latest Block Magicians</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {ids.map(id => (
           <NFTCard key={id} id={id} />
