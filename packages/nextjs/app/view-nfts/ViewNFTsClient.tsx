@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import type { NextPage } from "next";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { Address } from "~~/components/scaffold-eth";
 
 // Reuse NFTCard and logic from the previous client page
 
@@ -17,22 +18,31 @@ const NFTCard = ({ id }: NFTCardProps) => {
     args: [BigInt(id)],
   });
 
-  const imageSrc = useMemo(() => {
-    if (!data) return "";
+  const meta = useMemo(() => {
+    if (!data) return null;
     try {
       const json = atob(data.replace("data:application/json;base64,", ""));
-      const meta = JSON.parse(json);
-      return meta.image as string;
+      return JSON.parse(json) as { image: string; owner: string; description: string };
     } catch (err) {
       console.error("Failed to decode tokenURI", err);
-      return "";
+      return null;
     }
   }, [data]);
+
+  const imageSrc = meta?.image ?? "";
 
   return (
     <div className="flex flex-col items-center">
       {imageSrc ? <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" /> : <span>Loading...</span>}
       <span className="mt-2 font-semibold">#{id}</span>
+      {meta?.owner && (
+        <div className="mt-1">
+          <Address address={meta.owner} />
+        </div>
+      )}
+      {meta?.description && (
+        <p className="text-center text-sm mt-1">{meta.description}</p>
+      )}
     </div>
   );
 };
