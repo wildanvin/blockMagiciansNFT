@@ -2,12 +2,63 @@
 
 import { ethers } from "ethers";
 import type { NextPage } from "next";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
+
+  const protocols = [
+    "Base",
+    "Bitcoin",
+    "Celo",
+    "Ethereum",
+    "Gitcoin",
+    "Kleros",
+    "Monero",
+    "Optimism",
+    "UMA",
+    "Uniswap",
+  ];
+
+  const descriptions = [
+    "The agile illusionist who channels Coinbase’s strength into a fast, low-cost Layer-2 stage built on the OP Stack, inviting builders to conjure dApps with ease.",
+    "The stoic grandmaster who introduced the world to peer-to-peer electronic cash, forging trustless value with cryptographic proof instead of intermediaries.",
+    "The nimble enchantress who puts mobile first, casting carbon-negative spells to make ultra-light, low-fee payments accessible to everyone.",
+    "The versatile archmage who transforms code into unstoppable smart contracts, powering a universe of decentralized applications on his global ledger.",
+    "The generous benefactor whose quadratic-funding magic rallies communities to finance open-source public goods with fairness and impact.",
+    "The impartial adjudicator whose decentralized jury spells deliver fast, affordable verdicts for Web3 disputes across realms.",
+    "The shadow-weaver who cloaks every sender, receiver, and amount in ring signatures and stealth addresses, championing default privacy for all.",
+    "The optimistic sorceress scaling Ethereum with rollup tricks, granting users cheaper, speedier transactions while preserving mainnet security.",
+    "The truth-seeker who wields an Optimistic Oracle to anchor any verifiable fact on-chain, opening markets for limitless synthetic assets.",
+    "The liquidity alchemist whose automated market-maker formula turns pooled tokens into constant, permissionless swaps for traders worldwide.",
+  ];
+
+  const websites = [
+    "https://base.org",
+    "https://bitcoin.org",
+    "https://celo.org",
+    "https://ethereum.org",
+    "https://gitcoin.co",
+    "https://kleros.io",
+    "https://www.getmonero.org",
+    "https://www.optimism.io",
+    "https://uma.xyz",
+    "https://uniswap.org",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const updateRandomProtocol = () => {
+    setCurrentIndex(Math.floor(Math.random() * protocols.length));
+  };
+
+  useEffect(() => {
+    updateRandomProtocol();
+  }, []);
 
   // Read Moloch health
   const { data: healthData } = useScaffoldReadContract({
@@ -53,6 +104,7 @@ const Home: NextPage = () => {
                   functionName: "mintItem",
                   value: ethers.parseEther("0.001"),
                 });
+                updateRandomProtocol();
               } catch (e) {
                 console.error("Error setting mintin 1:", e);
               }
@@ -70,6 +122,7 @@ const Home: NextPage = () => {
                   functionName: "mintThree",
                   value: ethers.parseEther("0.003"),
                 });
+                updateRandomProtocol();
               } catch (e) {
                 console.error("Error setting minting 3:", e);
               }
@@ -87,6 +140,7 @@ const Home: NextPage = () => {
                   functionName: "mintTen",
                   value: ethers.parseEther("0.01"),
                 });
+                updateRandomProtocol();
               } catch (e) {
                 console.error("Error setting minting 10:", e);
               }
@@ -95,6 +149,25 @@ const Home: NextPage = () => {
           >
             {isMintingTen ? "Minting..." : "Mint 10"}
           </button>
+        </div>
+
+        <div className="my-6 flex flex-col items-center text-center">
+          <Image
+            src={`/svgs/${protocols[currentIndex]}.svg`}
+            alt={`${protocols[currentIndex]} logo`}
+            width={200}
+            height={200}
+            className="mb-4"
+          />
+          <p className="mb-2">{descriptions[currentIndex]}</p>
+          <a
+            href={websites[currentIndex]}
+            className="text-blue-400 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {websites[currentIndex]}
+          </a>
         </div>
 
         <div className="flex justify-center items-center space-x-2">
