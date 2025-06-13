@@ -1,4 +1,7 @@
-# 🏗 Scaffold-ETH 2
+# 🪄 Block Magicians
+
+Block Magicians is a playful DApp built on top of Scaffold‑ETH 2. Mint magical NFTs representing your
+favorite blockchain protocols and help defeat Moloch while supporting Web3 builders.
 
 some links usefull links:
 https://github.com/Quanhua-Guan/scaffold-eth-2/tree/eeemay/oh-pandas-meme
@@ -33,13 +36,13 @@ Before you begin, you need to install the following tools:
 
 ## Quickstart
 
-To get started with Scaffold-ETH 2, follow the steps below:
+To get started with Block Magicians, follow the steps below:
 
 1. Clone this repo & install dependencies
 
 ```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
+git clone <your-repo-url>
+cd blockMagiciansNFT
 yarn install
 ```
 
@@ -76,12 +79,12 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Documentation
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+Visit the [Scaffold-ETH docs](https://docs.scaffoldeth.io) to learn how this starter kit works.
 
 To know more about its features, check out our [website](https://scaffoldeth.io).
 
-## Contributing to Scaffold-ETH 2
+## Contributing
 
-We welcome contributions to Scaffold-ETH 2!
+We welcome contributions!
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing.
