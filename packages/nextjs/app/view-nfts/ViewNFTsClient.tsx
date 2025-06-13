@@ -47,16 +47,21 @@ const NFTCard = ({ id }: NFTCardProps) => {
 
   return (
     <div className="flex flex-col items-center group">
-      {imageSrc ? <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" /> : <span>Loading...</span>}
+      {imageSrc ? (
+        <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" />
+      ) : (
+        <span className="mt-2 font-semibold">Loading...</span>
+      )}
       <span className="mt-2 font-semibold">#{id}</span>
+      <span className="mt-1 font-medium">{protocol}</span>
+
       {meta?.owner && (
-        <div className="mt-1 text-sm">
+        <div className="mt-1 font-medium text-center">
           Owner: <Address address={meta.owner} />
         </div>
       )}
       {protocol && (
         <>
-          <span className="mt-1 font-medium">{protocol}</span>
           {protocolIndex >= 0 && (
             <p className="text-center text-sm mt-1 hidden group-hover:block">
               {protocol}
