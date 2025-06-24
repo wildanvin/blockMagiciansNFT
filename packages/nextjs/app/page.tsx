@@ -131,12 +131,22 @@ const Home: NextPage = () => {
             <p>
               Where your ETH goes:
               <br />• <strong>50&nbsp;%</strong> powers the{" "}
-              <a href="https://buidlguidl.com/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://buidlguidl.com/"
+                target="_blank"
+                className="text-emerald-400 underline hover:text-cyan-300"
+                rel="noopener noreferrer"
+              >
                 BuidlGuidl
               </a>
               .
               <br />• <strong>50&nbsp;%</strong> supports your friendly Web3&nbsp;dev —{" "}
-              <a href="https://x.com/wildanvin" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://x.com/wildanvin"
+                className="text-emerald-400 underline hover:text-cyan-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 me
               </a>
               ! ✌️😁
