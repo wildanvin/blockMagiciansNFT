@@ -6,11 +6,20 @@ import type { NextPage } from "next";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
-// Reuse NFTCard and logic from the previous client page
+// ────────────────────────────────────────────────────────────────────────────────
+// 🃏  NFT Card (description fades in by color, not layout shift)
+// ────────────────────────────────────────────────────────────────────────────────
 
 type NFTCardProps = {
   id: number;
 };
+
+const cardBase = [
+  "relative flex flex-col items-center rounded-2xl bg-slate-800/60",
+  "p-4 shadow-xl shadow-black/30",
+  "transition-transform duration-300 hover:scale-105 hover:shadow-emerald-500/40",
+  "overflow-hidden group",
+].join(" ");
 
 const NFTCard = ({ id }: NFTCardProps) => {
   const { data } = useScaffoldReadContract({
@@ -35,7 +44,6 @@ const NFTCard = ({ id }: NFTCardProps) => {
     }
   }, [data]);
 
-  const imageSrc = meta?.image ?? "";
   const protocol = useMemo(() => {
     const attr = meta?.attributes?.find(a => a.trait_type === "protocol");
     if (attr) return attr.value as string;
@@ -44,35 +52,40 @@ const NFTCard = ({ id }: NFTCardProps) => {
   }, [meta]);
 
   const protocolIndex = protocol ? protocols.indexOf(protocol) : -1;
+  const imageSrc = meta?.image ?? "";
 
   return (
-    <div className="flex flex-col items-center group">
+    <div className={cardBase}>
+      {/* IMAGE */}
       {imageSrc ? (
-        <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto" />
+        <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto rounded-xl shadow-md shadow-black/40" />
       ) : (
-        <span className="mt-2 font-semibold">Loading...</span>
+        <span className="mt-2 font-semibold text-emerald-300">Loading...</span>
       )}
-      <span className="mt-2 font-semibold">#{id}</span>
-      <span className="mt-1 font-medium">{protocol}</span>
 
+      {/* BASIC INFO */}
+      <span className="mt-3 text-xl font-bold text-emerald-300">#{id}</span>
+      <span className="mt-1 font-medium text-cyan-200">{protocol}</span>
       {meta?.owner && (
-        <div className="mt-1 font-medium text-center">
+        <div className="mt-1 text-sm text-slate-300 text-center break-all">
           Owner: <Address address={meta.owner} />
         </div>
       )}
-      {protocol && (
-        <>
-          {protocolIndex >= 0 && (
-            <p className="text-center text-sm mt-1 hidden group-hover:block">
-              {protocol}
-              {descriptions[protocolIndex]}
-            </p>
-          )}
-        </>
+
+      {/* DESCRIPTION — same bg colour by default, turns light on hover */}
+      {protocolIndex >= 0 && (
+        <p className="mt-2 text-center text-sm text-slate-800/0 group-hover:text-slate-200 transition-colors duration-300">
+          {protocol}
+          {descriptions[protocolIndex]}
+        </p>
       )}
     </div>
   );
 };
+
+// ────────────────────────────────────────────────────────────────────────────────
+// 📄  View NFTs Client Component
+// ────────────────────────────────────────────────────────────────────────────────
 
 const ViewNFTsClient: NextPage = () => {
   const { data: healthData } = useScaffoldReadContract({
@@ -84,16 +97,17 @@ const ViewNFTsClient: NextPage = () => {
   const minted = healthData ? maxHealth - Number(healthData) : 0;
   const ids = useMemo(() => {
     const arr: number[] = [];
-    for (let i = minted; i > 0 && arr.length < 4; i--) {
-      arr.push(i);
-    }
+    for (let i = minted; i > 0 && arr.length < 4; i--) arr.push(i);
     return arr;
   }, [minted]);
 
   return (
-    <div className="p-4">
-      <h1 className="text-4xl font-bold text-center mb-6">Latest Block Magicians</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div>
+      <h1 className="mb-10 text-center text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+        Latest Block&nbsp;Magicians
+      </h1>
+
+      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {ids.map(id => (
           <NFTCard key={id} id={id} />
         ))}
