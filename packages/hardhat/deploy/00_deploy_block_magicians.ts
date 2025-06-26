@@ -14,6 +14,9 @@ const deployBlockMagicians: DeployFunction = async function (hre: HardhatRuntime
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
+
+  const blockMagicians = await hre.ethers.getContract<Contract>("BlockMagicians", deployer);
+  await blockMagicians.transferOwnership("0x4b2b0D5eE2857fF41B40e3820cDfAc8A9cA60d9f");
 };
 
 export default deployBlockMagicians;
