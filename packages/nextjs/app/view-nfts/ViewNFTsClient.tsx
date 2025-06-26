@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { descriptions, protocols } from "../page";
+import Image from "next/image";
+import { descriptions, protocols } from "~~/utils/protocolData";
 import type { NextPage } from "next";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
@@ -58,7 +59,14 @@ const NFTCard = ({ id }: NFTCardProps) => {
     <div className={cardBase}>
       {/* IMAGE */}
       {imageSrc ? (
-        <img src={imageSrc} alt={`BlockMagician ${id}`} className="w-48 h-auto rounded-xl shadow-md shadow-black/40" />
+        <Image
+          src={imageSrc}
+          alt={`BlockMagician ${id}`}
+          width={300}
+          height={400}
+          unoptimized
+          className="w-48 h-auto rounded-xl shadow-md shadow-black/40"
+        />
       ) : (
         <span className="mt-2 font-semibold text-emerald-300">Loading...</span>
       )}
