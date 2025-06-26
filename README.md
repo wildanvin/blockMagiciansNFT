@@ -1,13 +1,7 @@
 # 🪄 Block Magicians
 
-Block Magicians is a playful DApp built on top of Scaffold‑ETH 2. Mint magical NFTs representing your
+Block Magicians is a SVG NFT project built on top of Scaffold‑ETH 2. Mint magicians NFTs representing your
 favorite blockchain protocols and help defeat Moloch while supporting Web3 builders.
-
-some links usefull links:
-https://github.com/Quanhua-Guan/scaffold-eth-2/tree/eeemay/oh-pandas-meme
-https://slatestarcodex.com/2014/07/30/meditations-on-moloch/
-https://mandalamerge.com/yourNfts
-https://www.rareskills.io/post/solidity-fixed-point
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
@@ -23,8 +17,6 @@ https://www.rareskills.io/post/solidity-fixed-point
 - 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
 - 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
 - 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
-
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
 
 ## Requirements
 
@@ -69,13 +61,6 @@ yarn start
 ```
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
-
-**What's next**:
-
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
-- Edit your smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
 
 ## Documentation
 
