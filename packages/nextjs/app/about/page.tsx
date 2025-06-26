@@ -23,7 +23,7 @@ const About: NextPage = () => {
         <article className="prose prose-invert prose-lg mx-auto">
           <p>
             Corruption, organized crime, back‑room deals, wars... No one in their right mind likes any of that, not even
-            the people doing it. But for some reason we can't stop doing it... Who perpetuates this cycle?{" "}
+            the people doing it. But for some reason we can&apos;t stop doing it... Who perpetuates this cycle?{" "}
             <strong>Moloch</strong> does.
           </p>
 
