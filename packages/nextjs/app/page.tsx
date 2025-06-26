@@ -202,10 +202,17 @@ const Home: NextPage = () => {
             </button>
           </div>
 
-          {/* <div className="flex justify-center items-center space-x-2">
-            <p className="font-medium">Your address:</p>
-            <Address address={connectedAddress} />
-          </div> */}
+          {/* OpenSea Link */}
+          <p className="mb-10 text-center">
+            <a
+              href="https://opensea.io/collection/blockmagicians"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan-300 underline hover:text-cyan-200 transition-colors"
+            >
+              See on OpenSea
+            </a>
+          </p>
         </div>
       </div>
     </section>

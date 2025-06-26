@@ -112,6 +112,17 @@ const ViewNFTsClient: NextPage = () => {
           <NFTCard key={id} id={id} />
         ))}
       </div>
+      {/* OpenSea Link */}
+      <p className="mb-10 text-center">
+        <a
+          href="https://opensea.io/collection/blockmagicians"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-cyan-300 underline hover:text-cyan-200 transition-colors"
+        >
+          See on OpenSea
+        </a>
+      </p>
     </div>
   );
 };
